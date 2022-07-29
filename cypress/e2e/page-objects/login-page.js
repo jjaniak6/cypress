@@ -5,7 +5,7 @@ export class LoginPage{
     }
 
     static login() {
-        cy.fixture('example.json').then(signInData => {
+        cy.fixture("login.json").then(signInData => {
             cy.get("#email").type(signInData.email)
             cy.get("#passwd").type(signInData.password)
         })
@@ -16,7 +16,7 @@ export class LoginPage{
     }
 
     static checkIfMyAccountIsOpen() {
-        cy.get('.page-heading').contains("My account")
+        cy.get(".page-heading").contains("My account")
     }
 
 }

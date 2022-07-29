@@ -18,8 +18,8 @@ export class WomenPage{
         price = cena;
         }); 
         cy.get(".product_list>:nth-child("+number+")").contains("Add to cart").click();
-        cy.wait(8000); 
-        return price;   
+        cy.wait(8000);   
+        return price; 
     }
 
     static continueShopping(){
