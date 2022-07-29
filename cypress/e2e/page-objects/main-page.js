@@ -16,5 +16,9 @@ export class MainPage {
         cy.get(".login").contains("Sign in").click()
     }
 
+    static checkIfShoppingCartIsOpen() {
+        cy.get('#cart_title').contains("Shopping-cart summary")
+    }
+
 
 }

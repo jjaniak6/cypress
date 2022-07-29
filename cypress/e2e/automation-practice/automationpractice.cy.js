@@ -11,31 +11,31 @@ context('e-shop go to', () => {
     })
 
 
-    describe('log in', () => {
+    // describe('log in', () => {
 
-        it('should login', () => {
-            MainPage.logIn();
-            LoginPage.login();
-            LoginPage.clickSubmitButton();
-            LoginPage.checkIfMyAccountIsOpen();
-        })
+    //     it('should login', () => {
+    //         MainPage.logIn();
+    //         LoginPage.login();
+    //         LoginPage.clickSubmitButton();
+    //         LoginPage.checkIfMyAccountIsOpen();
+    //     })
 
-    })
+    // })
 
     describe('add to card', () => {
 
-        it('should open category: Women', () => {
+        it('should add item to cart', () => {
             MainPage.clickCategory('Women');
             WomenPage.checkIfWomenCategoryisOpen();
-            WomenPage.addToCard("Printed Dress");
+            let price1 = WomenPage.addToCard(2);;
+            console.log(price1);
+            WomenPage.continueShopping();
+            let price2;
+            WomenPage.addToCard(4, price2);
+            WomenPage.continueShopping();
+            MainPage.clickShoppingCart();
+            MainPage.checkIfShoppingCartIsOpen(); 
         })
-
-        // it('should open cart page', () => {
-        //     MainPage.clickShoppingCart();
-        //     ShoppingCart.checkIfShoppingCartisOpen(); 
-        // })
-
-
 
     })
 
