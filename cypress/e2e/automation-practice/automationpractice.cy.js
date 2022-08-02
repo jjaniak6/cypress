@@ -13,37 +13,51 @@ context('e-shop go to', () => {
 
 
     describe('log in', () => {
-        before(function(){
+
+        beforeEach(function(){
             cy.fixture('login.json').then(function(signInData){
                this.signInData = signInData
             })
          });
+
+         it('should not login', function() {
+            MainPage.logIn();
+            LoginPage.login(this.signInData[1].email, this.signInData[1].password);
+            LoginPage.clickSubmitButton();
+            LoginPage.checkIfLoginFailed();
+        })
+
         it('should login', function() {
             MainPage.logIn();
-            LoginPage.login(this.signInData.email, this.signInData.password);
+            LoginPage.login(this.signInData[0].email, this.signInData[0].password);
             LoginPage.clickSubmitButton();
             LoginPage.checkIfMyAccountIsOpen();
-        })
+        });
+
+
 
     })
 
-    describe('add to card', () => {
+    // describe('add to card', () => {
 
-        it('should add item to cart', () => {
-            MainPage.clickCategory('Women');
-            WomenPage.checkIfWomenCategoryisOpen();
-            let price1 = WomenPage.addToCard(2);
-            WomenPage.continueShopping();
-            let price2 = WomenPage.addToCard(3);
-            WomenPage.continueShopping();
-            MainPage.clickShoppingCart();
-            ShoppingCartPage.checkIfShoppingCartIsOpen(); 
-            ShoppingCartPage.checkPrice1(price1);
-            ShoppingCartPage.checkPrice2(price2);
-            ShoppingCartPage.checkTotal();
-        })
+    //     it('should add item to cart', () => {
+    //         MainPage.clickCategory('Women');
+    //         WomenPage.checkIfWomenCategoryisOpen();
+    //         let price1 = WomenPage.addToCard(2);
+    //         cy.log(price1);
+    //         // let price1 = WomenPage.addToCard2("Blouse");
+    //         WomenPage.continueShopping();
+    //         // let price2 = WomenPage.addToCard(3);
+    //         let price2 = WomenPage.addToCard2("Printed Dress");
+    //         WomenPage.continueShopping();
+    //         MainPage.clickShoppingCart();
+    //         ShoppingCartPage.checkIfShoppingCartIsOpen(); 
+    //         ShoppingCartPage.checkPrice1(price1);
+    //         ShoppingCartPage.checkPrice2(price2);
+    //         ShoppingCartPage.checkTotal();
+    //     })
 
-    })
+    // })
 
 
 })

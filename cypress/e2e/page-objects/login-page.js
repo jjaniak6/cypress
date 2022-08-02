@@ -17,4 +17,8 @@ export class LoginPage{
         cy.get(".page-heading").contains("My account")
     }
 
+    static checkIfLoginFailed() {
+        cy.get("#center_column > div.alert.alert-danger > ol > li").should("have.text", "Authentication failed.")
+    }
+
 }
