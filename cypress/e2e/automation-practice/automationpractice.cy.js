@@ -12,16 +12,20 @@ context('e-shop go to', () => {
     })
 
 
-    // describe('log in', () => {
+    describe('log in', () => {
+        before(function(){
+            cy.fixture('login.json').then(function(signInData){
+               this.signInData = signInData
+            })
+         });
+        it('should login', function() {
+            MainPage.logIn();
+            LoginPage.login(this.signInData.email, this.signInData.password);
+            LoginPage.clickSubmitButton();
+            LoginPage.checkIfMyAccountIsOpen();
+        })
 
-    //     it('should login', () => {
-    //         MainPage.logIn();
-    //         LoginPage.login();
-    //         LoginPage.clickSubmitButton();
-    //         LoginPage.checkIfMyAccountIsOpen();
-    //     })
-
-    // })
+    })
 
     describe('add to card', () => {
 
@@ -35,7 +39,7 @@ context('e-shop go to', () => {
             MainPage.clickShoppingCart();
             ShoppingCartPage.checkIfShoppingCartIsOpen(); 
             ShoppingCartPage.checkPrice1(price1);
-            ShoppingCartPage.checkPrice2();
+            ShoppingCartPage.checkPrice2(price2);
             ShoppingCartPage.checkTotal();
         })
 

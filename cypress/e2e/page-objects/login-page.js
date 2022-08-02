@@ -4,11 +4,9 @@ export class LoginPage{
         cy.visit("http://automationpractice.com/index.php?controller=authentication&back=my-account");
     }
 
-    static login() {
-        cy.fixture("login.json").then(signInData => {
-            cy.get("#email").type(signInData.email)
-            cy.get("#passwd").type(signInData.password)
-        })
+    static login(email, password) {
+            cy.get("#email").type(email)
+            cy.get("#passwd").type(password)
     }
 
     static clickSubmitButton() {
