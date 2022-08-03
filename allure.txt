@@ -1,0 +1,3 @@
+cypress run --env allure=true
+
+allure generate allure-results --clean -o allure-report

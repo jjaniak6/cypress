@@ -37,4 +37,18 @@ export class WomenPage{
         cy.get("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > span").contains("Continue shopping").click();
     }
 
+    static addElementToCart(number){
+        cy.get(`#homefeatured > :nth-child(${number})`).contains('Add to cart').click();
+        cy.get(`#homefeatured > :nth-child(${number}) > div > div.right-block > div.content_price > span`)
+        .invoke('text').then(sometext => {
+            const cena = sometext;
+            cy.log("Cena: ",cena);
+            cy.readFile("./cypress/fixtures/prices.json").then((list) => {
+                list.push({price: cena.trim()})
+                cy.writeFile("./cypress/fixtures/prices.json", list);
+
+            })
+        })
+    }    
+
 }
