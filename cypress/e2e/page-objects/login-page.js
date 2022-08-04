@@ -15,10 +15,12 @@ export class LoginPage{
 
     static checkIfMyAccountIsOpen() {
         cy.get(".page-heading").contains("My account")
+        cy.wait(6000)
     }
 
     static checkIfLoginFailed() {
         cy.get("#center_column > div.alert.alert-danger > ol > li").should("have.text", "Authentication failed.")
+        cy.wait(6000)
     }
 
 }

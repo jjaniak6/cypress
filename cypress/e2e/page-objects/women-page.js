@@ -8,19 +8,7 @@ export class WomenPage{
         cy.get(".page-heading").contains("Women")
     };
 
-
-    static addToCard(number){
-        let price = cy.get(".product_list>:nth-child("+number+") > div > div.right-block >  div.content_price > span")
-        .invoke("text").then(sometext => {  
-            price = sometext;
-            cy.log("Cena: ", price)
-            price = cy.wrap(price)
-            }); 
-        cy.get(".product_list>:nth-child("+number+")").contains("Add to cart").click(); 
-    }
-
     static addToCard2(productName){
-
         let price = cy.get(".product_list").find(productName).then(() => {
             cy.get(".content_price > span")
             .invoke("text").then(sometext => {
@@ -38,9 +26,9 @@ export class WomenPage{
     }
 
     static addElementToCart(number){
-        cy.get(`#homefeatured > :nth-child(${number})`).contains('Add to cart').click();
-        cy.get(`#homefeatured > :nth-child(${number}) > div > div.right-block > div.content_price > span`)
-        .invoke('text').then(sometext => {
+        cy.get(".product_list>:nth-child("+number+")").contains('Add to cart').click();
+        cy.get(".product_list>:nth-child("+number+") > div > div.right-block >  div.content_price > span")
+        .invoke("text").then(sometext => {
             const cena = sometext;
             cy.log("Cena: ",cena);
             cy.readFile("./cypress/fixtures/prices.json").then((list) => {
