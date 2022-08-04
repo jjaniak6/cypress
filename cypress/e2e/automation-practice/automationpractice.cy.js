@@ -12,26 +12,27 @@ context('e-shop go to', () => {
         MainPage.openAutomationPracticePage();
     })
 
-    // describe('log in', () => {
+    describe('log in', () => {
 
-    //     beforeEach(function(){
-    //         cy.fixture('login.json').then(function(signInData){
-    //            this.signInData = signInData
-    //         })
-    //      });
-    //      it('should not login', function() {
-    //         MainPage.logIn();
-    //         LoginPage.login(this.signInData[1].email, this.signInData[1].password);
-    //         LoginPage.clickSubmitButton();
-    //         LoginPage.checkIfLoginFailed();
-    //     })
-    //     it('should login', function() {
-    //         MainPage.logIn();
-    //         LoginPage.login(this.signInData[0].email, this.signInData[0].password);
-    //         LoginPage.clickSubmitButton();
-    //         LoginPage.checkIfMyAccountIsOpen();
-    //     });
-    // })
+        beforeEach(function(){
+            cy.fixture('login.json').then(function(signInData){
+               this.signInData = signInData
+            })
+         });
+         it('should not login', function() {
+            MainPage.logIn();
+            LoginPage.login(this.signInData[1].email, this.signInData[1].password);
+            LoginPage.clickSubmitButton();
+            LoginPage.checkIfLoginFailed();
+        })
+        it('should login', function() {
+            MainPage.logIn();
+            LoginPage.login(this.signInData[0].email, this.signInData[0].password);
+            LoginPage.clickSubmitButton();
+            LoginPage.checkIfMyAccountIsOpen();
+        });
+    })
+
 
     describe('add to card', () => {
 
@@ -49,9 +50,7 @@ context('e-shop go to', () => {
             WomenPage.continueShopping();
             MainPage.clickShoppingCart();
             ShoppingCartPage.checkIfShoppingCartIsOpen(); 
-            // ShoppingCartPage.checkPrice1(price1);
-            // ShoppingCartPage.checkPrice2(price2);
-            // ShoppingCartPage.checkTotal();
+            ShoppingCartPage.checkPrices();
         })
 
     })
