@@ -5,7 +5,7 @@ export class WomenPage{
     };
 
     static checkIfWomenCategoryisOpen() {
-        cy.get(".page-heading").should("eq", "Women")
+        cy.get(".page-heading").should("contain", "Women")
     };
 
     static clickContinueShopping() {
@@ -21,17 +21,16 @@ export class WomenPage{
     }
 
     static getProductPriceAndWriteItToJSONfile(productName) {
-        cy.get(".product_list").find(".product-container").contains(productName).parent(".product-container").then(() => {cy.get(".content_price")
+        cy.get(".product_list").find(".product-container").contains(productName).parents(".product-container").find(" div.content_price > span")
         .invoke("text").then(sometext => {
-            const cena = sometext;
+            const cena = sometext.trim().slice(0,8).trim();
             cy.log("Cena: ",cena);
             cy.readFile("./cypress/fixtures/prices.json").then((list) => {
-                list.push({price: cena.trim()})
+                list.push({price: cena})
                 cy.writeFile("./cypress/fixtures/prices.json", list);
 
             })
         })
-    })
     }
 
 }

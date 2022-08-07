@@ -5,13 +5,13 @@ export class ShoppingCartPage {
     };
 
     static checkIfShoppingCartIsOpen() {
-        cy.get("#cart_title").contains("Shopping-cart summary")
+        cy.url().should("eq", "http://automationpractice.com/index.php?controller=order")
     }
 
     static checkPrices() {
         cy.fixture("prices.json").then(pricesData =>{
-            cy.get("#product_price_2_7_0 > span").should("have.text", pricesData[0].price);
-            cy.get("#product_price_3_13_0 > span").should("have.text", pricesData[1].price);
+            cy.get('tbody > :nth-child(1) > .cart_unit').should("contain", pricesData[0].price);
+            cy.get('tbody > :nth-child(2) > .cart_unit').should("contain", pricesData[1].price);
         })
     }
 
