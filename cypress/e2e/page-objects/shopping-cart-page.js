@@ -1,6 +1,6 @@
 export class ShoppingCartPage {
 
-    static openAutomationPracticeShoppingCartPage(){
+    static openAutomationPracticeShoppingCartPage() {
         cy.visit("http://automationpractice.com/index.php?controller=order");
     };
 

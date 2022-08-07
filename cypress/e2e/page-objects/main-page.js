@@ -12,9 +12,8 @@ export class MainPage {
         cy.get(".shopping_cart").contains("Cart").click();
     }
 
-    static logIn(){
+    static clickSignIn(){
         cy.get(".login").contains("Sign in").click()
     }
-
 
 }

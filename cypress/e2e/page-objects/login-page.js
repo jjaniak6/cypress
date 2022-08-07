@@ -1,26 +1,22 @@
 export class LoginPage{
 
-    static openAutomationPracticeSignInPage(){
-        cy.visit("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-    }
-
-    static login(email, password) {
+    static inputEmail(email) {
             cy.get("#email").type(email)
-            cy.get("#passwd").type(password)
     }
 
-    static clickSubmitButton() {
+    static inputPassword(password) {
+        cy.get("#passwd").type(password)
+    }
+
+    static submitLogin() {
         cy.get("#SubmitLogin").click()
     }
 
+    static signOut() {
+        cy.get(".logout").contains("Sign out").click()
+    }
+
     static checkIfMyAccountIsOpen() {
-        cy.get(".page-heading").contains("My account")
-        cy.wait(6000)
+        cy.url().should("eq", "http://automationpractice.com/index.php?controller=my-account")
     }
-
-    static checkIfLoginFailed() {
-        cy.get("#center_column > div.alert.alert-danger > ol > li").should("have.text", "Authentication failed.")
-        cy.wait(6000)
-    }
-
 }

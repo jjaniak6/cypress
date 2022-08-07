@@ -1,33 +1,27 @@
 export class WomenPage{
 
-    static openAutomationPracticeWomenPage(){
+    static openAutomationPracticeWomenPage() {
         cy.visit("http://automationpractice.com/index.php?id_category=3&controller=category");
     };
 
-    static checkIfWomenCategoryisOpen(){
-        cy.get(".page-heading").contains("Women")
+    static checkIfWomenCategoryisOpen() {
+        cy.get(".page-heading").should("eq", "Women")
     };
 
-    static addToCard2(productName){
-        let price = cy.get(".product_list").find(productName).then(() => {
-            cy.get(".content_price > span")
-            .invoke("text").then(sometext => {
-                const cena = sometext;
-                cy.log("Cena: ", cena)
-                price = cena;
-            }); 
-        })
-        cy.get(".product-list").find(productName).contains("Add to cart").click();
-        return price;
-    }
-
-    static continueShopping(){
+    static clickContinueShopping() {
         cy.get("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > span").contains("Continue shopping").click();
+    }   
+
+    static clickProceedToCheckout() {
+        cy.get("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > a > span").contains("Proceed to checkout").click();
     }
 
-    static addElementToCart(number){
-        cy.get(".product_list>:nth-child("+number+")").contains('Add to cart').click();
-        cy.get(".product_list>:nth-child("+number+") > div > div.right-block >  div.content_price > span")
+    static addProductToCartByName(productName) {
+        cy.get(".product_list").find(".product-container").contains(productName).parents(".product-container").contains('Add to cart').click();
+    }
+
+    static getProductPriceAndWriteItToJSONfile(productName) {
+        cy.get(".product_list").find(".product-container").contains(productName).parent(".product-container").then(() => {cy.get(".content_price")
         .invoke("text").then(sometext => {
             const cena = sometext;
             cy.log("Cena: ",cena);
@@ -37,6 +31,7 @@ export class WomenPage{
 
             })
         })
-    }    
+    })
+    }
 
 }

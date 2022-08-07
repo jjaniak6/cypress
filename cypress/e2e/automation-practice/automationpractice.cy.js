@@ -14,46 +14,46 @@ context('e-shop go to', () => {
 
     describe('log in', () => {
 
+        let signInData;
+
         beforeEach(function(){
-            cy.fixture('login.json').then(function(signInData){
-               this.signInData = signInData
+            cy.fixture('login.json').then((data) => {
+               signInData = data
             })
          });
-         it('should not login', function() {
-            MainPage.logIn();
-            LoginPage.login(this.signInData[1].email, this.signInData[1].password);
-            LoginPage.clickSubmitButton();
-            LoginPage.checkIfLoginFailed();
-        })
-        it('should login', function() {
-            MainPage.logIn();
-            LoginPage.login(this.signInData[0].email, this.signInData[0].password);
-            LoginPage.clickSubmitButton();
-            LoginPage.checkIfMyAccountIsOpen();
+
+        it('should sign in and sign out', function() {
+
+            signInData.forEach((user) => {
+                MainPage.clickSignIn();
+                LoginPage.inputEmail(user.email);
+                LoginPage.inputPassword(user.password);
+                LoginPage.submitLogin();
+                LoginPage.checkIfMyAccountIsOpen();
+                LoginPage.signOut();
+            })
         });
     })
 
 
-    describe('add to card', () => {
+    // describe('add to card', () => {
 
-        beforeEach( () => {
-            cy.writeFile("./cypress/fixtures/prices.json", [])
-        });
+    //     beforeEach( () => {
+    //         cy.writeFile("./cypress/fixtures/prices.json", [])
+    //     });
 
-        it('should add item to cart', () => {
-            MainPage.clickCategory('Women');
-            WomenPage.checkIfWomenCategoryisOpen();
-            WomenPage.addElementToCart(2);
-            cy.wait(5000)
-            WomenPage.continueShopping();
-            WomenPage.addElementToCart(3);
-            WomenPage.continueShopping();
-            MainPage.clickShoppingCart();
-            ShoppingCartPage.checkIfShoppingCartIsOpen(); 
-            ShoppingCartPage.checkPrices();
-        })
-
-    })
-
-
+    //     it('should add item to cart', () => {
+    //         MainPage.clickCategory('Women');
+    //         WomenPage.checkIfWomenCategoryisOpen();
+    //         WomenPage.addProductToCartByName("Faded Short Sleeve T-shirts");
+    //         WomenPage.getProductPriceAndWriteItToJSONfile("Faded Short Sleeve T-shirts")
+    //         cy.wait(5000)
+    //         // WomenPage.continueShopping();
+    //         // WomenPage.addProductToCartByName("Faded Short Sleeve T-shirts");
+    //         // WomenPage.continueShopping();
+    //         WomenPage.clickProceedToCheckout();
+    //         ShoppingCartPage.checkIfShoppingCartIsOpen(); 
+    //         ShoppingCartPage.checkPrices();
+    //     })
+    // })
 })
