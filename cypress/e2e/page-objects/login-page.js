@@ -9,7 +9,7 @@ export class LoginPage{
     }
 
     static submitLogin() {
-        cy.get("#SubmitLogin").click()
+        cy.get("#SubmitLogin").contains("Sign in").click()
     }
 
     static signOut() {
