@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Mon Aug 08 14:05:06 CEST 2022","Mon Aug 08 14:05:42 CEST 2022","36159","e-shop go to","add to card","","","","should add 2 items to cart",""
+"broken","Mon Aug 08 14:05:06 CEST 2022","Mon Aug 08 14:05:42 CEST 2022","36128","","e-shop go to add to card","","e-shop go to add to card","should add 2 items to cart","should add 2 items to cart",""
+"passed","Mon Aug 08 14:02:39 CEST 2022","Mon Aug 08 14:05:06 CEST 2022","146972","","e-shop go to log in","","e-shop go to log in","should sign in and sign out","should sign in and sign out",""
+"passed","Mon Aug 08 14:02:51 CEST 2022","Mon Aug 08 14:05:06 CEST 2022","134649","e-shop go to","log in","","","","should sign in and sign out",""

@@ -1,0 +1,53 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1659960306234' stop='1659960342480'>
+    <name>e-shop go to add to card</name>
+    <title>e-shop go to add to card</title>
+    <test-cases>
+        <test-case start='1659960306234' status='broken' stop='1659960342362'>
+            <name>should add 2 items to cart</name>
+            <title>should add 2 items to cart</title>
+            <labels/>
+            <parameters/>
+            <steps/>
+            <attachments/>
+            <failure>
+                <message>Timed out retrying after 4050ms: `cy.click()` failed because this element is not visible:
+                
+                `&lt;span>...&lt;/span>`
+                
+                This element `&lt;span>` is not visible because its parent `&lt;div#layer_cart>` has CSS property: `display: none`
+                
+                Fix this problem, or use `{force: true}` to disable error checking.
+                
+                https://on.cypress.io/element-cannot-be-interacted-with</message>
+                <stack-trace>CypressError: Timed out retrying after 4050ms: `cy.click()` failed because this element is not visible:
+                
+                `&lt;span>...&lt;/span>`
+                
+                This element `&lt;span>` is not visible because its parent `&lt;div#layer_cart>` has CSS property: `display: none`
+                
+                Fix this problem, or use `{force: true}` to disable error checking.
+                
+                https://on.cypress.io/element-cannot-be-interacted-with
+                    at runVisibilityCheck (http://automationpractice.com/__cypress/runner/cypress_runner.js:162179:76)
+                    at $Cy.ensureStrictVisibility (http://automationpractice.com/__cypress/runner/cypress_runner.js:162195:12)
+                    at runAllChecks (http://automationpractice.com/__cypress/runner/cypress_runner.js:148019:14)
+                    at retryActionability (http://automationpractice.com/__cypress/runner/cypress_runner.js:148074:16)
+                    at tryCatcher (http://automationpractice.com/__cypress/runner/cypress_runner.js:13012:23)
+                    at Promise.attempt.Promise.try (http://automationpractice.com/__cypress/runner/cypress_runner.js:10286:29)
+                    at whenStable (http://automationpractice.com/__cypress/runner/cypress_runner.js:167274:65)
+                    at http://automationpractice.com/__cypress/runner/cypress_runner.js:166728:14
+                    at tryCatcher (http://automationpractice.com/__cypress/runner/cypress_runner.js:13012:23)
+                    at Promise._settlePromiseFromHandler (http://automationpractice.com/__cypress/runner/cypress_runner.js:10947:31)
+                    at Promise._settlePromise (http://automationpractice.com/__cypress/runner/cypress_runner.js:11004:18)
+                    at Promise._settlePromise0 (http://automationpractice.com/__cypress/runner/cypress_runner.js:11049:10)
+                    at Promise._settlePromises (http://automationpractice.com/__cypress/runner/cypress_runner.js:11129:18)
+                    at Promise._fulfill (http://automationpractice.com/__cypress/runner/cypress_runner.js:11073:18)
+                    at http://automationpractice.com/__cypress/runner/cypress_runner.js:12687:46
+                From Your Spec Code:
+                    at WomenPage.clickContinueShopping (http://automationpractice.com/__cypress/tests?p=cypress\e2e\automation_practice\automationpractice.cy.js:307:143)
+                    at Context.eval (http://automationpractice.com/__cypress/tests?p=cypress\e2e\automation_practice\automationpractice.cy.js:148:28)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>
