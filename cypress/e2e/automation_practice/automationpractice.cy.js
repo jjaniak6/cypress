@@ -24,10 +24,13 @@ context('e-shop go to', () => {
 
             signInData.forEach((user) => {
                 MainPage.clickSignIn();
+                cy.wait(6000);
                 LoginPage.inputEmail(user.email);
                 LoginPage.inputPassword(user.password);
                 LoginPage.submitLogin();
+                cy.wait(6000);
                 LoginPage.checkIfMyAccountIsOpen();
+                cy.wait(6000);
                 LoginPage.signOut();
             })
         });
@@ -41,13 +44,18 @@ context('e-shop go to', () => {
 
         it('should add 2 items to cart', () => {
             MainPage.clickCategory('Women');
+            cy.wait(6000);
             WomenPage.checkIfWomenCategoryisOpen();
             WomenPage.addProductToCartByName("Faded Short Sleeve T-shirts");
             WomenPage.getProductPriceAndWriteItToJSONfile("Faded Short Sleeve T-shirts");
+            cy.wait(6000);
             WomenPage.clickContinueShopping();
+            cy.wait(6000);
             WomenPage.addProductToCartByName("Printed Dress");
             WomenPage.getProductPriceAndWriteItToJSONfile("Printed Dress");
+            cy.wait(6000);
             WomenPage.clickProceedToCheckout();
+            cy.wait(6000);
             ShoppingCartPage.checkIfShoppingCartIsOpen(); 
             ShoppingCartPage.checkPrices();
         })

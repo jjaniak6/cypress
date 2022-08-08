@@ -1,7 +1,7 @@
 export class LoginPage{
 
     static inputEmail(email) {
-            cy.get("#email").type(email)
+        cy.get("#email").type(email)
     }
 
     static inputPassword(password) {

@@ -13,7 +13,7 @@ export class MainPage {
     }
 
     static clickSignIn(){
-        cy.get(".login").contains("Sign in").click()
+        cy.get(".header_user_info").contains("Sign in").click()
     }
 
 }

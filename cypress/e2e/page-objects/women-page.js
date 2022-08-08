@@ -24,7 +24,7 @@ export class WomenPage{
         cy.get(".product_list").find(".product-container").contains(productName).parents(".product-container").find(" div.content_price > span")
         .invoke("text").then(sometext => {
             const cena = sometext.trim().slice(0,8).trim();
-            cy.log("Cena: ",cena);
+            cy.log("Cena: ", cena);
             cy.readFile("./cypress/fixtures/prices.json").then((list) => {
                 list.push({price: cena})
                 cy.writeFile("./cypress/fixtures/prices.json", list);
